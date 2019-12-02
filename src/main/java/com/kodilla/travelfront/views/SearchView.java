@@ -2,7 +2,8 @@ package com.kodilla.travelfront.views;
 
 import com.kodilla.travelfront.components.SearchForm;
 import com.kodilla.travelfront.components.TopBar;
-import com.kodilla.travelfront.domain.Flight;
+import com.kodilla.travelfront.domain.FlightDto;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -21,14 +22,20 @@ public class SearchView extends VerticalLayout {
         horizontalLayout.setWidthFull();
 
         SearchForm searchForm = new SearchForm();
-        searchForm.setWidth("30%");
 
-        Grid<Flight> flightGrid = new Grid<>(Flight.class);
-        flightGrid.setColumns("to", "from", "airline", "departure", "arrival", "price");
-        flightGrid.setWidth("70%");
+        Button searchButton = new Button("Search");
 
-        horizontalLayout.add(searchForm, flightGrid);
+        Grid<FlightDto> flightGrid = new Grid<>(FlightDto.class);
+        flightGrid.setColumns("airport", "destination", "airline", "departure", "arrival", "price");
 
-        add(topBar, horizontalLayout);
+        Grid<FlightDto> returnGrid = new Grid<>(FlightDto.class);
+        returnGrid.setColumns("airport", "destination", "airline", "departure", "arrival", "price");
+
+        searchButton.addClickListener(event -> {
+            flightGrid.setItems(searchForm.getFlightDtoList());
+            returnGrid.setItems(searchForm.getReturnList());
+        });
+
+        add(topBar, searchForm, searchButton, flightGrid, returnGrid);
     }
 }
