@@ -1,6 +1,7 @@
 package com.kodilla.travelfront.services;
 
 import com.kodilla.travelfront.backend.TravelClient;
+import com.kodilla.travelfront.domain.AirlineDto;
 import com.kodilla.travelfront.domain.AirportDto;
 import com.kodilla.travelfront.domain.FlightDto;
 import com.kodilla.travelfront.domain.WeatherDto;
@@ -38,5 +39,9 @@ public class TravelService {
 
     public void addAirport(AirportDto airportDto) {
         travelClient.addAirport(airportDto);
+    }
+
+    public void addAirLine(AirlineDto airlineDto) {
+        travelClient.addAirline(airlineDto);
     }
 }

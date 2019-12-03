@@ -46,15 +46,4 @@ public class WeatherDto {
         return rainfall;
     }
 
-    @Override
-    public String toString() {
-        return "WeatherDto{" +
-                "id=" + id +
-                ", city='" + city + '\'' +
-                ", date=" + date +
-                ", temperature=" + temperature +
-                ", cloudiness=" + cloudiness +
-                ", rainfall=" + rainfall +
-                '}';
-    }
 }

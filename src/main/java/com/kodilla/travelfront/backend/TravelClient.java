@@ -1,9 +1,6 @@
 package com.kodilla.travelfront.backend;
 
-import com.kodilla.travelfront.domain.AirportDto;
-import com.kodilla.travelfront.domain.FlightDto;
-import com.kodilla.travelfront.domain.Trip;
-import com.kodilla.travelfront.domain.WeatherDto;
+import com.kodilla.travelfront.domain.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -21,9 +18,6 @@ public class TravelClient {
     private final static String BASE_URL = "http://localhost:8082/v1/travel/";
 
     public List<FlightDto> getFlights(String airport, String destination, LocalDate date) {
-        List<Trip> trips = new ArrayList<>();
-
-
         URI flightURL = UriComponentsBuilder.fromHttpUrl(BASE_URL +
                 "flights/" + airport + "/" + destination + "/" + date.toString())
                 .build()
@@ -86,5 +80,14 @@ public class TravelClient {
                 .toUri();
 
         restTemplate.postForLocation(airportURL, airportDto);
+    }
+
+    public void addAirline(AirlineDto airlineDto) {
+        URI airportURL = UriComponentsBuilder.fromHttpUrl(BASE_URL + "airline")
+                .build()
+                .encode()
+                .toUri();
+
+        restTemplate.postForLocation(airportURL, airlineDto);
     }
 }

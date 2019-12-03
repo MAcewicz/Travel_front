@@ -4,42 +4,34 @@ package com.kodilla.travelfront.domain;
 public class AirportDto {
 
     private Long id;
-    private String name;
-    private String iata;
     private String city;
     private String country;
     private String countryCode;
+    private String iata;
+    private String name;
 
     public AirportDto() {
     }
 
-    public AirportDto(Long id, String name, String iata, String city, String country, String countryCode) {
+    public AirportDto(Long id, String city, String country, String countryCode, String iata, String name) {
         this.id = id;
-        this.name = name;
-        this.iata = iata;
         this.city = city;
         this.country = country;
         this.countryCode = countryCode;
+        this.iata = iata;
+        this.name = name;
     }
 
-    public AirportDto(String name, String iata, String city, String country, String countryCode) {
-        this.name = name;
-        this.iata = iata;
+    public AirportDto(String city, String country, String countryCode, String iata, String name) {
         this.city = city;
         this.country = country;
         this.countryCode = countryCode;
+        this.iata = iata;
+        this.name = name;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getIata() {
-        return iata;
     }
 
     public String getCity() {
@@ -54,15 +46,11 @@ public class AirportDto {
         return countryCode;
     }
 
-    @Override
-    public String toString() {
-        return "AirportDto{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", iata='" + iata + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", countryCode='" + countryCode + '\'' +
-                '}';
+    public String getIata() {
+        return iata;
+    }
+
+    public String getName() {
+        return name;
     }
 }

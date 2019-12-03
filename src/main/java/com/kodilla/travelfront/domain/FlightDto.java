@@ -54,16 +54,4 @@ public class FlightDto {
         return price;
     }
 
-    @Override
-    public String toString() {
-        return "FlightDto{" +
-                "id=" + id +
-                ", airport='" + airport + '\'' +
-                ", destination='" + destination + '\'' +
-                ", airline='" + airline + '\'' +
-                ", departure=" + departure +
-                ", arrival=" + arrival +
-                ", price=" + price +
-                '}';
-    }
 }

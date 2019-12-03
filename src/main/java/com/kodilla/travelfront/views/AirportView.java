@@ -3,6 +3,7 @@ package com.kodilla.travelfront.views;
 import com.kodilla.travelfront.domain.AirportDto;
 import com.kodilla.travelfront.services.TravelService;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
@@ -26,11 +27,14 @@ public class AirportView extends VerticalLayout {
         name.setLabel("name");
 
         Button button = new Button("Add");
-        button.addClickListener(event -> travelService.addAirport(new AirportDto(city.getValue(),
-                country.getValue(),
-                countryCode.getValue(),
-                iata.getValue(),
-                name.getValue())));
+        button.addClickListener(event -> {
+            travelService.addAirport(new AirportDto(city.getValue(),
+                    country.getValue(),
+                    countryCode.getValue(),
+                    iata.getValue(),
+                    name.getValue()));
+            Notification.show("Airport added");
+        });
 
         add(city, country, countryCode, iata, name, button);
     }
